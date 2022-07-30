@@ -25,6 +25,7 @@ pipeline {
                 success {
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archiveArtifacts 'target/*.jar'
+                    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar’, fingerprint: true])
                 }
             }
         }
